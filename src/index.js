@@ -20,16 +20,12 @@ const resolvers = {
             }));
         },
         authors: () => _db.authors,
-        game: (_, { id, name }) => {
-            if (!name)
-                throw new GraphQLError('Name is required', {
-                    extensions: {
-                        code: 'BAD_USER_INPUT',
-                    },
-                });
-            return _db.games.find(
-                (game) => game.id === id && game.name.includes(name)
-            );
+        game: (_, { id }) => {
+            return _db.games.find((game) => game.id === id);
+        },
+        gameByName: (_, { name }) => {
+            //find list games that name contain the name parameter
+            return _db.games.filter((game) => game.name.includes(name));
         },
     },
     Mutation: {
