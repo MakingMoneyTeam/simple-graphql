@@ -9,6 +9,7 @@ export const typeDefs = `#graphql
         id: ID!
         game: Game!
         rating: Int!
+        author: Author!
         comment: String
     }
 
@@ -22,5 +23,17 @@ export const typeDefs = `#graphql
         games: [Game]
         reviews: [Review]
         authors: [Author]
+        game(id: ID!, name: String): Game 
     }
+    
+    type Mutation {
+        addGame(name: String!, platform: [String!]!): Game
+        updateGame(id: ID!, name: String, platform: [String]): Game
+        deleteGame(id: ID!): String
+    }
+
+    type Error{
+        message: String!
+    }
+
 `;

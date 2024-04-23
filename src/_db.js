@@ -1,4 +1,4 @@
-let games = [
+const games = [
     {
         id: '1',
         name: 'Super Mario Bros.',
